@@ -46,6 +46,12 @@ public class PlayerController : MonoBehaviour
         float moveInput = _inputActions.Player.Move.ReadValue<Vector2>().x;
         HandleMovement(moveInput);
         UpdateAnimation(moveInput);
+
+        if (transform.position.y < -20f)
+        {
+            _audioManager.PlayGameOverSound();
+            _gameManager.GameOver();
+        }
     }
 
     private void HandleMovement(float moveInput)
