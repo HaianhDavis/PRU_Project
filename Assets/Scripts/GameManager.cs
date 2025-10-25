@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
         _score = 0;
         UpdateScore();
         Time.timeScale = 1;
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("MapVang");
     }
 
     public void GotoMenu()
