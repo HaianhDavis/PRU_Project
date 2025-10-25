@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private bool _gameWin = false;
     void Start()
     {
+        Time.timeScale = 1;
         UpdateScore();
         gameOverUI.SetActive(false);
         gameWinUI.SetActive(false);
@@ -51,7 +52,8 @@ public class GameManager : MonoBehaviour
         _score = 0;
         UpdateScore();
         Time.timeScale = 1;
-        SceneManager.LoadScene("Game");
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentSceneName);
     }
 
     public void GotoMenu()

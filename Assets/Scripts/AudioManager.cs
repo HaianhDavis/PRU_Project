@@ -1,29 +1,25 @@
- using UnityEngine;
+using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] private AudioSource backGroundAudioSource;
     [SerializeField] private AudioSource effectAudioSource;
+
     [SerializeField] private AudioClip backGroundClip;
     [SerializeField] private AudioClip jumpClip;
     [SerializeField] private AudioClip coinClip;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private AudioClip gameoverClip;
+
     void Start()
     {
         PlayBackGroundMusic();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void PlayBackGroundMusic()
     {
-         backGroundAudioSource.clip = backGroundClip; 
-         backGroundAudioSource.Play();
+        backGroundAudioSource.clip = backGroundClip;
+        backGroundAudioSource.loop = true; 
+        backGroundAudioSource.Play();
     }
 
     public void PlayCoinSound()
@@ -33,6 +29,12 @@ public class AudioManager : MonoBehaviour
 
     public void PlayJumpSound()
     {
-        effectAudioSource.PlayOneShot(jumpClip);  
+        effectAudioSource.PlayOneShot(jumpClip);
+    }
+
+    public void PlayGameOverSound()
+    {
+        backGroundAudioSource.Stop();
+        effectAudioSource.PlayOneShot(gameoverClip);
     }
 }
